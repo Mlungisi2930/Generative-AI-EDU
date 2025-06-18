@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Educational Content Generator</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f6f9;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    /* Header */
+    .main-header {
+      background: linear-gradient(90deg, #1a73e8, #1967d2);
+      color: white;
+      padding: 3rem 1rem 2rem;
+      text-align: center;
+    }
+
+    .main-header h1 {
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .main-header p {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+      opacity: 0.95;
+    }
+
+    /* Navigation */
+    nav {
+      background-color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      transition: transform 0.2s ease;
+    }
+
+    nav ul li:hover {
+      transform: scale(1.05);
+    }
+
+    nav ul li a {
+      color: #1a73e8;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      background-color: #1a73e8;
+      color: white;
+    }
+
+    /* Form Container */
+    .container {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    input, select {
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    .full-width {
+      grid-column: 1 / -1;
+    }
+
+    button {
+      margin-top: 1.5rem;
+      background: #1a73e8;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #0c5dc0;
+    }
+
+    .output {
+      margin-top: 2rem;
+      padding: 1rem;
+      background: #e9f0ff;
+      border-left: 5px solid #1a73e8;
+      border-radius: 6px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #1a73e8;
+      color: white;
+      padding: 2rem 1rem;
+      margin-top: 4rem;
+    }
+
+    .footer-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .footer-left h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-left p {
+      max-width: 300px;
+      line-height: 1.5;
+    }
+
+    .footer-right ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-right ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-right ul li a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .footer-right ul li a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      font-size: 0.85rem;
+      margin-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.3);
+      padding-top: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+      }
+
+      .footer-container {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="main-header">
+    <h1>AI Educational Content Generator</h1>
+    <p>Create customized lesson plans and study guides using the power of AI.</p>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Generate</a></li>
+      <li><a href="#">Resources</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Form Section -->
+  <main class="container">
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" placeholder="e.g., Life Sciences" />
+      </div>
+
+      <div class="form-group">
+        <label for="grade">Grade Level</label>
+        <input type="text" id="grade" placeholder="e.g., Grade 11" />
+      </div>
+
+      <div class="form-group full-width">
+        <label for="topic">Topic</label>
+        <input type="text" id="topic" placeholder="e.g., Photosynthesis" />
+      </div>
+
+      <div class="form-group full-width">
+        <label for="type">Content Type</label>
+        <select id="type">
+          <option value="lesson">Lesson Plan</option>
+          <option value="guide">Study Guide</option>
+        </select>
+      </div>
+    </div>
+
+    <button onclick="generateContent()">Generate</button>
+
+    <div class="output" id="output" style="display: none;">
+      <h3>📄 Generated Content</h3>
+      <p id="content">Generating...</p>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-left">
+        <h3>AI EduTool</h3>
+        <p>Empowering educators with AI tools to generate quality content in seconds.</p>
+      </div>
+      <div class="footer-right">
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Help & Support</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 AI EduTool. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- Script --> 
+   <script> 
+   
+   async function generateContent() {
+    const subject = document.getElementById("subject").value;
+    const grade = document.getElementById("grade").value;
+    const topic = document.getElementById("topic").value;
+    const type = document.getElementById("type").value;
+    const contentBox = document.getElementById("output");
+    const content = document.getElementById("content");
+
+    // Validate inputs
+    if (!subject || !grade || !topic) {
+        contentBox.style.display = "block";
+        content.innerHTML = "<strong>Error:</strong> Please fill all fields";
+        return;
+    }
+
+    contentBox.style.display = "block";
+    content.innerHTML = "<em>Generating content... (This may take 20-30 seconds)</em>";
+
+    try {
+        const response = await fetch("http://localhost:5000/generate", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                subject: subject,
+                grade: grade,
+                topic: topic,
+                type: type
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        
+        if (data.error) {
+            throw new Error(data.error);
+        }
+
+        content.innerHTML = data.result.replace(/\n/g, "<br>");
+    } catch (error) {
+        console.error("Fetch error:", error);
+        content.innerHTML = `<strong>Error:</strong> ${error.message}`;
+    }
+}
+  </script>
+  
+</body>
+</html>
